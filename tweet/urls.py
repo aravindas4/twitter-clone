@@ -1,9 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .views import (
-    UserViewSet, TweetViewSet
-)
+from .views import UserViewSet, TweetViewSet
 
 app_name = "tweets"
 router = routers.SimpleRouter()

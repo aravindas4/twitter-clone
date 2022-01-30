@@ -17,15 +17,15 @@ class User(AbstractUser, BaseModel):
         max_length=10,
         unique=True,
         help_text=(
-            'Required. 10 characters and 8 chars atleast. Letters, digits '
-            'and @/./+/-/_ only.'
+            "Required. 10 characters and 8 chars atleast. Letters, digits "
+            "and @/./+/-/_ only."
         ),
         validators=[
             username_validator,
             MinLengthValidator(8),
         ],
         error_messages={
-            'unique': "A user with that username already exists.",
+            "unique": "A user with that username already exists.",
         },
     )
 
@@ -36,10 +36,12 @@ class Tweet(BaseModel):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tweets"
     )
-    text = models.CharField(max_length=140, validators=[
-
-        MinLengthValidator(2),
-        ], )
+    text = models.CharField(
+        max_length=140,
+        validators=[
+            MinLengthValidator(2),
+        ],
+    )
 
     def __str__(self):
         return self.id
