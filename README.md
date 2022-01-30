@@ -56,6 +56,8 @@ There are 2 models
 
 ## API Structures
 
+host value: `http://aravindasholla1.pythonanywhere.com`
+
 ### Tweet Resource:
 1. Create - POST `{{host}}/apis/tweet/`
 Input:
