@@ -13,7 +13,7 @@ class TweetViewSet(
     mixins.ListModelMixin,
     mixins.RetrieveModelMixin,
     mixins.DestroyModelMixin,
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer

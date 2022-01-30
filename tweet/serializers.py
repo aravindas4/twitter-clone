@@ -4,10 +4,13 @@ from .models import User, Tweet
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
-        fields = ("id", "username", "created_at")
+        fields = (
+            "id",
+            "username",
+            "created_at",
+        )
 
 
 class TweetSerializer(serializers.ModelSerializer):
@@ -15,4 +18,10 @@ class TweetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tweet
-        fields = ("id", "author", "created_at", "author_username")
+        fields = (
+            "id",
+            "author",
+            "created_at",
+            "author_username",
+            "text",
+        )
