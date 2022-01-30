@@ -123,6 +123,7 @@ REST_FRAMEWORK = {
 
 api_settings.DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
+# JWT settings
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
