@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from decouple import config
 
+from rest_framework.settings import api_settings
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -105,6 +107,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    "DEFAULT_PAGINATION_CLASS": (
+        "tweet.utils.CustomPageNumberPagination"
+    ),
+}
+
+api_settings.DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

@@ -1,4 +1,4 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, permissions, viewsets
 from .models import User, Tweet
 from .serializers import UserSerializer, TweetSerializer
 
@@ -17,3 +17,4 @@ class TweetViewSet(
 ):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
+    permission_classes = (permissions.IsAuthenticated,)
