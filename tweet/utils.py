@@ -1,6 +1,8 @@
 import uuid
 
 from django.db import models
+from rest_framework import status
+from rest_framework.exceptions import APIException
 from rest_framework.pagination import PageNumberPagination
 
 
@@ -26,3 +28,24 @@ class CustomPageNumberPagination(PageNumberPagination):
     page_size = 50
     page_size_query_param = "limit"
     max_page_size = 1000
+
+
+class CustomAPIException(APIException):
+    """
+    Custom API Exception class. Can be customized for status code and error
+    details. For usage at Serializer validations.
+    """
+
+    status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    message = "A server error occurred."
+    field = "detail"
+
+    def __init__(self, message=None, field=None, status_code=None):  # noqa
+        if status_code:
+            self.status_code = status_code
+        if message:
+            self.message = message
+        if field:
+            self.field = field
+
+        self.detail = {self.field: self.message}

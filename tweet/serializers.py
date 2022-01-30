@@ -1,3 +1,4 @@
+import value as value
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 
@@ -13,14 +14,14 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     @staticmethod
-    def validate_password(value: str) -> str:
+    def validate_password(data: str) -> str:
         """
         Hash value passed by user.
 
-        :param value: password of a user
+        :param data: password of a user
         :return: a hashed version of the password
         """
-        return make_password(value)
+        return make_password(data)
 
 
 class TweetSerializer(serializers.ModelSerializer):
@@ -35,3 +36,9 @@ class TweetSerializer(serializers.ModelSerializer):
             "author_username",
             "text",
         )
+        extra_kwargs = {
+            # Because the field is captured while saving the serializer
+            "author": {
+                "required": False,
+            },
+        }
