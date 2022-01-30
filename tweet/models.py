@@ -48,4 +48,4 @@ class Tweet(BaseModel):
 
     class Meta:
         verbose_name_plural = "Tweets"
-        ordering = ("-created_at",)
+        ordering = ("-created_at",)  # Latest first

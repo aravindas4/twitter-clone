@@ -12,6 +12,8 @@ def get_short_uuid():
 
 
 class BaseModel(models.Model):
+    """Abstract model for all the concrete models."""
+
     id = models.CharField(
         max_length=12, default=get_short_uuid, editable=False, primary_key=True
     )

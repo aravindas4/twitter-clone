@@ -15,20 +15,20 @@ class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 class TweetViewSet(
     mixins.CreateModelMixin,
     mixins.ListModelMixin,
-    mixins.RetrieveModelMixin,
     viewsets.GenericViewSet,
 ):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
+    # Util classes
     class RecordsSerializer(serializers.Serializer):
-        """Ids serializer."""
+        """Ids serializer. Verifies if input data is a list of characters."""
 
         ids = serializers.ListField(child=serializers.CharField(min_length=1))
 
     class DateSerializer(serializers.Serializer):
-        """Date Serializer."""
+        """Date Serializer. Verifies if input data is date value."""
 
         date = serializers.DateField()
 

@@ -1,4 +1,3 @@
-import value as value
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 
@@ -6,6 +5,8 @@ from .models import User, Tweet
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Serializer for user model."""
+
     class Meta:
         model = User
         fields = ("id", "username", "created_at", "password")
@@ -25,6 +26,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TweetSerializer(serializers.ModelSerializer):
+    """Serializer for Twitter model."""
+
     author_username = serializers.ReadOnlyField(source="author.username")
 
     class Meta:
