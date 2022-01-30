@@ -38,7 +38,7 @@ class Tweet(BaseModel):
     )
     text = models.CharField(max_length=140, validators=[
 
-            MinLengthValidator(2),
+        MinLengthValidator(2),
         ], )
 
     def __str__(self):
